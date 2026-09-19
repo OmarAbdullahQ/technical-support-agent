@@ -1,0 +1,27 @@
+[project]
+name = "technical-support-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "transformers",
+    "datasets",
+    "evaluate",
+    "scikit-learn",
+    "torch",
+    "accelerate",
+    "peft",
+    "sentencepiece",
+    "langgraph",
+    "langfuse",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "python-dotenv",
+    "openai",
+    "pandas",
+    "jupyter",
+    "ipykernel",
+    "trl>=1.13.0",
+]

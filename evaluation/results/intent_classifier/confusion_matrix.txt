@@ -1,0 +1,13 @@
+Model A - Confusion Matrix
+============================================================
+
+Rows = Actual
+Columns = Predicted
+
+Actual                     api        billing   cancellation      complaint      technical        upgrade
+api                         50              0              0              0              0              0
+billing                      0             50              1              0              0              0
+cancellation                 0              0             48              0              0              0
+complaint                    0              0              0             50              0              0
+technical                    0              0              0              0             51              0
+upgrade                      0              0              1              0              0             49

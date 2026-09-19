@@ -1,0 +1,35 @@
+Model A - Intent Classifier Evaluation
+============================================================
+
+Overall Metrics
+------------------------------------------------------------
+Accuracy: 0.9933
+Macro Precision: 0.9933
+Macro Recall: 0.9934
+Macro F1: 0.9933
+
+Classification Report
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+         api     1.0000    1.0000    1.0000        50
+     billing     1.0000    0.9804    0.9901        51
+cancellation     0.9600    1.0000    0.9796        48
+   complaint     1.0000    1.0000    1.0000        50
+   technical     1.0000    1.0000    1.0000        51
+     upgrade     1.0000    0.9800    0.9899        50
+
+    accuracy                         0.9933       300
+   macro avg     0.9933    0.9934    0.9933       300
+weighted avg     0.9936    0.9933    0.9934       300
+
+Recall Requirement Check
+------------------------------------------------------------
+api: recall=1.0000 PASS
+billing: recall=0.9804 PASS
+cancellation: recall=1.0000 PASS
+complaint: recall=1.0000 PASS
+technical: recall=1.0000 PASS
+upgrade: recall=0.9800 PASS
+
+Overall requirement: PASS

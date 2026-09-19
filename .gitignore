@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+data/model_a_dataset/
+data/model_c_dataset/
+data/model_b_dataset/
+data/golden_set.jsonl
+
+models/*/checkpoint-*/
+models/**/*.bin
+models/**/*.safetensors
+models/**/*.pt
+models/**/*.pth
+models/**/*.ckpt
+
+.cache/
+.huggingface/
+
+.env

@@ -1,0 +1,16 @@
+{
+  "model": "models/qa_model",
+  "dataset": "data/model_b_dataset",
+  "validation_examples": 121,
+  "exact_match": 0.12396694214876033,
+  "token_f1": 0.4438491198849277,
+  "thresholds": {
+    "exact_match": 0.3,
+    "token_f1": 0.3
+  },
+  "gate": {
+    "exact_match_pass": false,
+    "token_f1_pass": true,
+    "overall_pass": false
+  }
+}
