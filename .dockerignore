@@ -1,0 +1,15 @@
+.git
+.venv
+.env
+.env.*
+.cache
+.pytest_cache
+**/__pycache__
+**/checkpoint-*
+**/*.pyc
+data/*.db*
+data/model_a_dataset
+data/model_c_dataset
+tmp_trainer
+evaluation
+tests

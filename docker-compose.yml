@@ -1,0 +1,62 @@
+services:
+  support-agent:
+    build: .
+    container_name: support-agent
+
+    env_file:
+      - .env
+
+    environment:
+      API_KEY: ${API_KEY:?Set API_KEY in .env}
+      DATABASE_URL: sqlite:///data/mock_support.db
+      HF_HOME: /app/.cache/huggingface
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./models:/app/models:ro
+      - ./data:/app/data
+      - ${HF_CACHE_PATH:-./.cache/huggingface}:/app/.cache/huggingface
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    restart: unless-stopped
+
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+
+    environment:
+      ENABLE_OPENAI_API: "true"
+      ENABLE_OLLAMA_API: "false"
+      OPENAI_API_BASE_URLS: http://support-agent:8000/v1
+      OPENAI_API_KEYS: ${API_KEY:?Set API_KEY in .env}
+
+    ports:
+      - "3000:8080"
+
+    volumes:
+      - openwebui:/app/backend/data
+
+    depends_on:
+      support-agent:
+        condition: service_healthy
+
+    restart: unless-stopped
+
+
+volumes:
+  openwebui:

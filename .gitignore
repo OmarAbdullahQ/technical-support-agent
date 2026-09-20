@@ -25,3 +25,5 @@ models/**/*.ckpt
 .huggingface/
 
 .env
+.pytest_cache/
+data/*.db*

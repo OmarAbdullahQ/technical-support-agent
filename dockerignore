@@ -1,0 +1,48 @@
+.git
+.gitignore
+.venv
+venv
+.env
+.env.*
+.cache
+.pytest_cache
+.mypy_cache
+.ruff_cache
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/checkpoint-*
+
+# Training/evaluation artifacts not needed in the runtime image
+evaluation
+tests
+notebooks
+tmp_trainer
+
+# Large source datasets: runtime uses docs / mounted data instead
+data/model_a_dataset
+data/model_b_dataset
+data/model_c_dataset
+data/model_c_source
+data/raw
+data/processed
+data/**/*.parquet
+data/**/*.arrow
+data/**/*.zip
+data/**/*.tar
+data/**/*.tar.gz
+data/*.db*
+
+# Large model weights/checkpoints are supplied by the local models volume
+# in docker-compose rather than baked into the image.
+models/**/*.safetensors
+models/**/*.bin
+models/**/*.pt
+models/**/*.pth
+models/**/*.ckpt
+
+# IDE / OS noise
+.vscode
+.idea
+.DS_Store
+Thumbs.db

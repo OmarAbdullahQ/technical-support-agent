@@ -1,0 +1,1 @@
+"""Tuwaiq technical support application."""

@@ -1,0 +1,302 @@
+{
+  "case_count": 8,
+  "routers": {
+    "rules_classifier": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "mean_seconds": 0.0058,
+      "llm_usage_rate": 0.0,
+      "fallback_error_rate": 0.25,
+      "wrong_routes": [],
+      "cases": [
+        {
+          "prompt": "According to the deployment guide, which port must be exposed?",
+          "expected": "qa",
+          "predicted": "qa",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0011
+        },
+        {
+          "prompt": "What does the documentation say about API authentication?",
+          "expected": "qa",
+          "predicted": "qa",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "My PostgreSQL pool is at 98% and requests time out.",
+          "expected": "tools",
+          "predicted": "tools",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0003
+        },
+        {
+          "prompt": "The API returns 503 after deployment; health says database degraded.",
+          "expected": "tools",
+          "predicted": "tools",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "What is QLoRA?",
+          "expected": "support",
+          "predicted": "support",
+          "correct": true,
+          "source": "fallback",
+          "confidence": 0.0,
+          "fallback_reason": "low_confidence",
+          "seconds": 0.0206
+        },
+        {
+          "prompt": "Can someone help me understand why a Docker container may exit after startup?",
+          "expected": "support",
+          "predicted": "support",
+          "correct": true,
+          "source": "fallback",
+          "confidence": 0.0,
+          "fallback_reason": "low_confidence",
+          "seconds": 0.0245
+        },
+        {
+          "prompt": "Production database may be corrupted after a failed migration.",
+          "expected": "escalate",
+          "predicted": "escalate",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "We suspect a security breach in production.",
+          "expected": "escalate",
+          "predicted": "escalate",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        }
+      ]
+    },
+    "llm": {
+      "accuracy": 0.625,
+      "macro_f1": 0.525,
+      "mean_seconds": 0.72,
+      "llm_usage_rate": 1.0,
+      "fallback_error_rate": 0.0,
+      "wrong_routes": [
+        {
+          "prompt": "My PostgreSQL pool is at 98% and requests time out.",
+          "expected": "tools",
+          "predicted": "support",
+          "source": "groq"
+        },
+        {
+          "prompt": "The API returns 503 after deployment; health says database degraded.",
+          "expected": "tools",
+          "predicted": "escalate",
+          "source": "groq"
+        },
+        {
+          "prompt": "What is QLoRA?",
+          "expected": "support",
+          "predicted": "qa",
+          "source": "groq"
+        }
+      ],
+      "cases": [
+        {
+          "prompt": "According to the deployment guide, which port must be exposed?",
+          "expected": "qa",
+          "predicted": "qa",
+          "correct": true,
+          "source": "groq",
+          "confidence": 0.95,
+          "fallback_reason": null,
+          "seconds": 1.4225
+        },
+        {
+          "prompt": "What does the documentation say about API authentication?",
+          "expected": "qa",
+          "predicted": "qa",
+          "correct": true,
+          "source": "groq",
+          "confidence": 0.95,
+          "fallback_reason": null,
+          "seconds": 0.6526
+        },
+        {
+          "prompt": "My PostgreSQL pool is at 98% and requests time out.",
+          "expected": "tools",
+          "predicted": "support",
+          "correct": false,
+          "source": "groq",
+          "confidence": 0.95,
+          "fallback_reason": null,
+          "seconds": 0.5878
+        },
+        {
+          "prompt": "The API returns 503 after deployment; health says database degraded.",
+          "expected": "tools",
+          "predicted": "escalate",
+          "correct": false,
+          "source": "groq",
+          "confidence": 0.99,
+          "fallback_reason": null,
+          "seconds": 0.683
+        },
+        {
+          "prompt": "What is QLoRA?",
+          "expected": "support",
+          "predicted": "qa",
+          "correct": false,
+          "source": "groq",
+          "confidence": 0.95,
+          "fallback_reason": null,
+          "seconds": 0.4992
+        },
+        {
+          "prompt": "Can someone help me understand why a Docker container may exit after startup?",
+          "expected": "support",
+          "predicted": "support",
+          "correct": true,
+          "source": "groq",
+          "confidence": 0.98,
+          "fallback_reason": null,
+          "seconds": 0.7604
+        },
+        {
+          "prompt": "Production database may be corrupted after a failed migration.",
+          "expected": "escalate",
+          "predicted": "escalate",
+          "correct": true,
+          "source": "groq",
+          "confidence": 0.99,
+          "fallback_reason": null,
+          "seconds": 0.6363
+        },
+        {
+          "prompt": "We suspect a security breach in production.",
+          "expected": "escalate",
+          "predicted": "escalate",
+          "correct": true,
+          "source": "groq",
+          "confidence": 0.99,
+          "fallback_reason": null,
+          "seconds": 0.5182
+        }
+      ],
+      "json_valid_rate": 1.0
+    },
+    "hybrid": {
+      "accuracy": 0.875,
+      "macro_f1": 0.8667,
+      "mean_seconds": 0.1396,
+      "llm_usage_rate": 0.25,
+      "fallback_error_rate": 0.0,
+      "wrong_routes": [
+        {
+          "prompt": "What is QLoRA?",
+          "expected": "support",
+          "predicted": "qa",
+          "source": "groq"
+        }
+      ],
+      "cases": [
+        {
+          "prompt": "According to the deployment guide, which port must be exposed?",
+          "expected": "qa",
+          "predicted": "qa",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0001
+        },
+        {
+          "prompt": "What does the documentation say about API authentication?",
+          "expected": "qa",
+          "predicted": "qa",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "My PostgreSQL pool is at 98% and requests time out.",
+          "expected": "tools",
+          "predicted": "tools",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "The API returns 503 after deployment; health says database degraded.",
+          "expected": "tools",
+          "predicted": "tools",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "What is QLoRA?",
+          "expected": "support",
+          "predicted": "qa",
+          "correct": false,
+          "source": "groq",
+          "confidence": 0.95,
+          "fallback_reason": null,
+          "seconds": 0.5361
+        },
+        {
+          "prompt": "Can someone help me understand why a Docker container may exit after startup?",
+          "expected": "support",
+          "predicted": "support",
+          "correct": true,
+          "source": "groq",
+          "confidence": 0.98,
+          "fallback_reason": null,
+          "seconds": 0.5805
+        },
+        {
+          "prompt": "Production database may be corrupted after a failed migration.",
+          "expected": "escalate",
+          "predicted": "escalate",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        },
+        {
+          "prompt": "We suspect a security breach in production.",
+          "expected": "escalate",
+          "predicted": "escalate",
+          "correct": true,
+          "source": "rule",
+          "confidence": 1.0,
+          "fallback_reason": null,
+          "seconds": 0.0
+        }
+      ]
+    }
+  }
+}

@@ -1,13 +1,12 @@
 [project]
 name = "technical-support-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Multi-model technical support agent with Groq routing and an OpenAI-compatible API"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "transformers",
     "datasets",
-    "evaluate",
     "scikit-learn",
     "torch",
     "accelerate",
@@ -20,8 +19,32 @@ dependencies = [
     "pydantic",
     "python-dotenv",
     "openai",
+    "langchain-core>=1,<2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9,<10",
+    "httpx>=0.28,<1",
+    "evaluate",
     "pandas",
     "jupyter",
     "ipykernel",
     "trl>=1.13.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+junit_family = "legacy"
+markers = ["integration: run real local models (opt in with --run-models)"]
+
+# Force the Linux Docker build to use the CPU-only PyTorch wheel.
+# This prevents uv from pulling several gigabytes of NVIDIA/CUDA packages
+# when the application is intended to run on CPU.
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
